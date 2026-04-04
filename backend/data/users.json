@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": "6258efc5-cb51-4f87-b5c8-3f26aa0fabbd",
+      "username": "sadok",
+      "passwordHash": "b81eb314dd450c87d8367c01d1b88717:df60878c61e9936910c6eb434c42dc95d75eaa61993b3f6d7c9f8dad0418be42a71666186e8ca792d2a8787753bcaefcd3e0c96d5f44c9aab463a2f940fe9c76",
+      "score": 0,
+      "level": "Beginner",
+      "badges": [],
+      "createdAt": "2026-04-04T00:21:53.156Z",
+      "updatedAt": "2026-04-04T00:26:05.274Z"
+    },
+    {
+      "id": "036d753f-496b-409a-801a-dfa470bf83fa",
+      "username": "Mondher",
+      "passwordHash": "b3d4aa94a33864ffcb18a42727362ad3:570aedcbb0fe277a5280861406f2f6d47cd4cde50a5c365548eb453081745e5b14eec2c7503fbf680643744e95953dc460e94ebfedb456c309c0ada6a3bd9686",
+      "score": 0,
+      "level": "Beginner",
+      "badges": [],
+      "createdAt": "2026-04-04T00:28:19.794Z",
+      "updatedAt": "2026-04-04T00:34:22.058Z"
+    }
+  ]
+}

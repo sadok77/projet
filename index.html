@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishLab | Learn How Phishing Works</title>
+  <meta
+    name="description"
+    content="Interactive lessons, examples, and safe simulations that teach users how phishing works and how to spot it."
+  >
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-glow page-glow-left" aria-hidden="true"></div>
+  <div class="page-glow page-glow-right" aria-hidden="true"></div>
+  <div class="page-shell">
+    <section class="auth-shell reveal visible" id="auth-shell">
+      <div class="auth-copy reveal visible">
+        <p class="eyebrow">Member access</p>
+        <h1>Sign in to unlock the phishing training lab.</h1>
+        <p class="hero-text">
+          Create a demo account or sign in with an existing username and password to access the lessons,
+          simulations, and quiz.
+        </p>
+        <div class="auth-benefits">
+          <span>Interactive inbox</span>
+          <span>Credential theft demo</span>
+          <span>Saved session on this browser</span>
+        </div>
+      </div>
+
+      <div class="auth-card reveal visible">
+        <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+          <button class="auth-tab active" id="login-tab" type="button">Login</button>
+          <button class="auth-tab" id="register-tab" type="button">Create account</button>
+        </div>
+
+        <form class="auth-form active" id="login-form">
+          <label>
+            Username
+            <input type="text" id="login-username" placeholder="your username" required>
+          </label>
+          <label>
+            Password
+            <input type="password" id="login-password" placeholder="your password" required>
+          </label>
+          <button class="button button-primary" type="submit">Sign in</button>
+        </form>
+
+        <form class="auth-form" id="register-form">
+          <label>
+            Username
+            <input type="text" id="register-username" placeholder="choose a username" required>
+          </label>
+          <label>
+            Password
+            <input type="password" id="register-password" placeholder="create a password" required>
+          </label>
+          <button class="button button-primary" type="submit">Create account</button>
+        </form>
+
+        <div class="auth-feedback" id="auth-feedback" aria-live="polite">
+          Use the demo login system to access the site.
+        </div>
+      </div>
+    </section>
+
+    <div class="site-content hidden" id="site-content">
+    <header class="hero reveal" id="hero">
+      <div class="hero-particles" aria-hidden="true">
+        <span class="particle particle-1"></span>
+        <span class="particle particle-2"></span>
+        <span class="particle particle-3"></span>
+        <span class="particle particle-4"></span>
+        <span class="particle particle-5"></span>
+        <span class="particle particle-6"></span>
+        <span class="particle particle-7"></span>
+        <span class="particle particle-8"></span>
+      </div>
+      <nav class="topbar">
+        <div class="brand-block">
+          <div class="brand">
+            <span class="brand-mark">PL</span>
+            <span>PhishLab</span>
+          </div>
+          <p class="brand-subtitle">Interactive phishing awareness platform</p>
+        </div>
+        <div class="topbar-links">
+          <div class="nav-links-group">
+            <a href="#examples">Examples</a>
+            <a href="#simulation">Simulation</a>
+            <a href="#quiz">Quiz</a>
+          </div>
+          <div class="nav-status-group">
+            <span class="score-pill" id="score-pill">Score 0 pts | Beginner</span>
+            <span class="session-pill" id="session-pill">Signed out</span>
+            <button class="button button-secondary nav-logout hidden" id="logout-button" type="button">Logout</button>
+          </div>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">
+            <span id="theme-toggle-label">Light mode</span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <section class="hero-copy reveal">
+          <p class="eyebrow">Security awareness, made practical</p>
+          <div class="hero-ribbon">
+            <span>Interactive lessons</span>
+            <span>Safe simulations</span>
+            <span>Immediate feedback</span>
+          </div>
+          <h1>Learn how phishing works before it works on you.</h1>
+          <p class="hero-text">
+            This site breaks down how phishing attacks are built, what warning signs they leave behind,
+            and how to respond using safe, interactive simulations instead of risky real-world exposure.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#simulation">Start simulation</a>
+            <a class="button button-secondary" href="#examples">Review examples</a>
+          </div>
+          <ul class="hero-stats" aria-label="Key learning outcomes">
+            <li><strong class="stat-number" data-target="5" data-suffix="">0</strong><span>attack patterns</span></li>
+            <li><strong class="stat-number" data-target="12" data-suffix="">0</strong><span>red flags to inspect</span></li>
+            <li><strong class="stat-number" data-target="100" data-suffix="%">0%</strong><span>safe practice mode</span></li>
+          </ul>
+        </section>
+
+        <aside class="hero-panel reveal" aria-label="Phishing attack flow">
+          <div class="hero-panel-card reveal">
+            <p class="panel-label">Typical phishing flow</p>
+            <ol class="attack-flow">
+              <li><span>1</span>Attacker impersonates a trusted sender</li>
+              <li><span>2</span>Creates urgency or fear</li>
+              <li><span>3</span>Pushes a link, file, or reply</li>
+              <li><span>4</span>Steals credentials, money, or access</li>
+            </ol>
+          </div>
+          <div class="signal-card reveal">
+            <p class="panel-label">Fastest warning signs</p>
+            <div class="signal-list">
+              <span>Suspicious domain</span>
+              <span>Urgent language</span>
+              <span>Unexpected attachment</span>
+              <span>Credential request</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="hero-band reveal" aria-label="Platform highlights">
+        <article class="band-item feature-card reveal">
+          <span class="band-kicker">Focus</span>
+          <strong>Realistic examples</strong>
+          <p>Message patterns modeled after the kinds of lures users actually receive.</p>
+        </article>
+        <article class="band-item feature-card reveal">
+          <span class="band-kicker">Method</span>
+          <strong>Guided inspection</strong>
+          <p>Users learn what to check before they click, reply, download, or sign in.</p>
+        </article>
+        <article class="band-item feature-card reveal">
+          <span class="band-kicker">Outcome</span>
+          <strong>Safer decisions</strong>
+          <p>Practice spotting pressure tactics, lookalike domains, and fake account prompts.</p>
+        </article>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section-panel reveal" id="how-it-works">
+        <div class="section-heading reveal">
+          <p class="eyebrow">How phishing works</p>
+          <h2>The attack is usually simple. The psychology is the real weapon.</h2>
+        </div>
+        <div class="info-grid">
+          <article class="info-card modern-card reveal">
+            <div class="info-icon" aria-hidden="true">🎭</div>
+            <h3>Impersonation</h3>
+            <p>Attackers copy a bank, coworker, school portal, delivery service, or cloud app to look legitimate.</p>
+          </article>
+          <article class="info-card modern-card reveal">
+            <div class="info-icon" aria-hidden="true">🕒</div>
+            <h3>Pressure</h3>
+            <p>They add urgency like "verify now," "payment failed," or "account locked" to reduce careful thinking.</p>
+          </article>
+          <article class="info-card modern-card reveal">
+            <div class="info-icon" aria-hidden="true">🖱️</div>
+            <h3>Action</h3>
+            <p>The message tries to get a click, a download, a reply, or a login submission.</p>
+          </article>
+          <article class="info-card modern-card reveal">
+            <div class="info-icon" aria-hidden="true">🔒</div>
+            <h3>Outcome</h3>
+            <p>Once a victim acts, the attacker can steal passwords, MFA codes, money, or internal access.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-panel reveal" id="examples">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Examples</p>
+          <h2>Compare realistic phishing lures with the clues they expose.</h2>
+        </div>
+        <div class="example-grid">
+          <article class="example-card modern-card bad reveal">
+            <div class="example-header">
+              <span class="badge badge-bad">Phishing</span>
+              <h3>Fake password reset</h3>
+            </div>
+            <p class="example-from">From: Microsoft Security &lt;security-team@micr0soft-login.co&gt;</p>
+            <p class="example-body">
+              "Your password expires today. Failure to act in 30 minutes will disable your mailbox.
+              Confirm your account immediately."
+            </p>
+            <ul class="clue-list">
+              <li>Lookalike domain uses `0` instead of `o`</li>
+              <li>Artificial deadline creates panic</li>
+              <li>Pushes an immediate credential action</li>
+            </ul>
+          </article>
+
+          <article class="example-card modern-card good reveal">
+            <div class="example-header">
+              <span class="badge badge-good">Legitimate</span>
+              <h3>Routine service notice</h3>
+            </div>
+            <p class="example-from">From: IT Support &lt;support@company.com&gt;</p>
+            <p class="example-body">
+              "Scheduled maintenance starts Friday at 10:00 PM. No action is required. Use the internal portal if you need status updates."
+            </p>
+            <ul class="clue-list">
+              <li>Normal domain matches the organization</li>
+              <li>No pressure to click or disclose secrets</li>
+              <li>Provides context instead of fear</li>
+            </ul>
+          </article>
+
+          <article class="example-card modern-card bad reveal">
+            <div class="example-header">
+              <span class="badge badge-bad">Phishing</span>
+              <h3>Package delivery scam</h3>
+            </div>
+            <p class="example-from">Text message: "Delivery failed. Pay redelivery fee now."</p>
+            <p class="example-body">
+              The site asks for card details, billing address, and a one-time passcode for a tiny fake fee.
+            </p>
+            <ul class="clue-list">
+              <li>Unexpected payment demand</li>
+              <li>Requests more data than needed</li>
+              <li>Uses a small fee to justify card entry</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-panel simulation-section reveal" id="simulation">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Simulation</p>
+          <h2>Practice spotting phishing signals in a safe inbox.</h2>
+        </div>
+
+        <div class="simulation-layout">
+          <section class="inbox-panel reveal">
+            <div class="panel-title-row">
+              <h3>Inbox simulation</h3>
+              <p>Select a message and decide whether to trust it.</p>
+            </div>
+            <div class="mail-list" id="mail-list" role="tablist" aria-label="Inbox messages"></div>
+          </section>
+
+          <section class="message-panel reveal">
+            <div class="message-card reveal">
+              <div class="message-meta">
+                <p class="message-label">Selected message</p>
+                <h3 id="message-subject">Choose a message</h3>
+                <p id="message-from" class="message-from"></p>
+              </div>
+              <div id="message-preview" class="message-preview">
+                Click a message in the inbox to inspect the sender, wording, and requested action.
+              </div>
+              <div class="message-actions">
+                <button class="button button-secondary" id="flag-button" type="button">Flag as phishing</button>
+                <button class="button button-primary" id="trust-button" type="button">Mark as legitimate</button>
+              </div>
+              <div class="feedback-box" id="feedback-box" aria-live="polite">
+                Your decision feedback will appear here.
+              </div>
+            </div>
+
+            <div class="inspection-card reveal">
+              <div class="inspection-header">
+                <h3>Red flag inspector</h3>
+                <p>Reveal the indicators you should always check before clicking.</p>
+              </div>
+              <div class="inspector-grid" id="inspector-grid"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section section-panel demo-section reveal" id="fake-login">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Credential theft demo</p>
+          <h2>See how a fake login page captures people without needing malware.</h2>
+        </div>
+        <div class="demo-layout">
+          <div class="browser-mock reveal">
+            <div class="warning-banner" aria-live="polite">
+              <span class="warning-banner-icon" aria-hidden="true">!</span>
+              <div>
+                <strong>Training warning</strong>
+                <p>This page is intentionally fake and demonstrates how polished credential traps can look.</p>
+              </div>
+            </div>
+            <div class="browser-bar">
+              <span></span><span></span><span></span>
+              <div class="address-bar">
+                https://company-portal-login.<span class="domain-danger">verify-session</span>.<span class="domain-danger">net</span>
+              </div>
+            </div>
+            <div class="login-card">
+              <h3>Secure Portal Verification</h3>
+              <p>Enter your work credentials to restore access.</p>
+              <form id="login-demo-form">
+                <label>
+                  Email
+                  <input type="email" id="demo-email" placeholder="name@company.com">
+                </label>
+                <label>
+                  Password
+                  <input type="password" id="demo-password" placeholder="Password">
+                </label>
+                <button class="button button-primary" type="submit">Sign in</button>
+              </form>
+              <p class="safe-note">Safe demo: nothing is sent or stored.</p>
+            </div>
+          </div>
+          <div class="demo-explainer reveal" id="demo-result">
+            This fake page looks polished, but the domain is unrelated to the real company. In a real attack,
+            entering your password would hand it directly to the attacker.
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-panel reveal" id="quiz">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Quiz</p>
+          <h2>Quick check: can you separate urgency from legitimacy?</h2>
+        </div>
+        <div class="quiz-card reveal">
+          <div class="quiz-progress-header">
+            <span class="quiz-progress-label" id="quiz-progress-label">Question 1 of 2</span>
+            <span class="quiz-progress-ratio" id="quiz-progress-ratio">50%</span>
+          </div>
+          <div class="quiz-progress-track" aria-hidden="true">
+            <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+          </div>
+          <p class="quiz-question" id="quiz-question"></p>
+          <div class="quiz-options" id="quiz-options"></div>
+          <div class="quiz-result" id="quiz-result">Choose an answer to see feedback.</div>
+        </div>
+      </section>
+
+      <section class="section section-panel reveal" id="badges">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Badges</p>
+          <h2>Track the achievements you unlock as your awareness improves.</h2>
+        </div>
+        <div class="badges-grid" id="badges-grid">
+          <article class="badge-card reveal locked" id="badge-first-step">
+            <div class="badge-icon" aria-hidden="true">★</div>
+            <div class="badge-content">
+              <h3>First Step</h3>
+              <p>Unlock your first correct answer anywhere in the training flow.</p>
+              <span class="badge-state">Locked</span>
+            </div>
+          </article>
+          <article class="badge-card reveal locked" id="badge-sharp-eye">
+            <div class="badge-icon" aria-hidden="true">◉</div>
+            <div class="badge-content">
+              <h3>Sharp Eye</h3>
+              <p>Make 3 correct phishing simulation decisions.</p>
+              <span class="badge-state">Locked</span>
+            </div>
+          </article>
+          <article class="badge-card reveal locked" id="badge-quiz-master">
+            <div class="badge-icon" aria-hidden="true">✓</div>
+            <div class="badge-content">
+              <h3>Quiz Master</h3>
+              <p>Complete the full quiz and reach the final question outcome.</p>
+              <span class="badge-state">Locked</span>
+            </div>
+          </article>
+          <article class="badge-card reveal locked" id="badge-phishing-expert">
+            <div class="badge-icon" aria-hidden="true">⬢</div>
+            <div class="badge-content">
+              <h3>Phishing Expert</h3>
+              <p>Reach Expert level or higher based on your total points.</p>
+              <span class="badge-state">Locked</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-panel reveal" id="leaderboard">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Leaderboard</p>
+          <h2>See the top 10 players ranked by score from the backend.</h2>
+        </div>
+        <div class="leaderboard-card reveal">
+          <div class="leaderboard-header">
+            <span>Rank</span>
+            <span>User</span>
+            <span>Level</span>
+            <span>Badges</span>
+            <span>Score</span>
+          </div>
+          <div class="leaderboard-list" id="leaderboard-list">
+            <div class="leaderboard-empty">Loading leaderboard...</div>
+          </div>
+        </div>
+      </section>
+    </main>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
