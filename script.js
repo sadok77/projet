@@ -217,7 +217,7 @@ const dashboardSimulationCaption = document.getElementById("dashboard-simulation
 
 let selectedMessage = null;
 let currentQuizIndex = 0;
-const API_BASE_URL = "http://localhost:3000/api";
+const API_BASE_URL = "https://projet-production-f97c.up.railway.app/api";
 const SESSION_KEY = "phishlab-session";
 const TOKEN_KEY = "phishlab-token";
 const USER_KEY = "phishlab-user";
