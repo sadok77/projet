@@ -12,6 +12,7 @@ const {
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
 const clientOrigin = process.env.CLIENT_ORIGIN || "*";
+const NEWS_API_KEY = process.env.NEWS_API_KEY || "cec9947b43754b228c6ee36c7f16fdc1";
 
 app.use(cors({
   origin: clientOrigin === "*" ? true : clientOrigin,
@@ -170,6 +171,46 @@ app.get("/api/user/score", authenticateToken, async (req, res) => {
     badges: user.badges
   });
 });
+
+async function handleCybersecurityNews(req, res) {
+  try {
+    const newsUrl = new URL("https://newsapi.org/v2/everything");
+    newsUrl.searchParams.set("q", "cybersecurity");
+    newsUrl.searchParams.set("language", "en");
+    newsUrl.searchParams.set("sortBy", "publishedAt");
+    newsUrl.searchParams.set("pageSize", "6");
+
+    const response = await fetch(newsUrl, {
+      headers: {
+        "X-Api-Key": NEWS_API_KEY
+      }
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      return res.status(response.status).json({
+        message: data.message || "Failed to load cybersecurity news"
+      });
+    }
+
+    const articles = Array.isArray(data.articles)
+      ? data.articles.map((article) => ({
+          title: article.title,
+          source: article.source?.name || "Unknown source",
+          publishedAt: article.publishedAt,
+          url: article.url
+        }))
+      : [];
+
+    return res.json({ articles });
+  } catch (error) {
+    return res.status(502).json({ message: "Unable to reach NewsAPI right now" });
+  }
+}
+
+app.get("/api/news", handleCybersecurityNews);
+app.get("/api/news/cybersecurity", handleCybersecurityNews);
 
 app.get("/api/leaderboard", async (req, res) => {
   const users = await readUsers();

@@ -192,7 +192,11 @@ const loginForm = document.getElementById("login-form");
 const registerForm = document.getElementById("register-form");
 const authFeedback = document.getElementById("auth-feedback");
 const authWordTargets = document.querySelectorAll(".auth-word-target");
+const heroLineTargets = document.querySelectorAll(".hero-line-target");
 const revealElements = document.querySelectorAll(".reveal");
+const newsGrid = document.getElementById("news-grid");
+const newsStatus = document.getElementById("news-status");
+const newsRefreshButton = document.getElementById("news-refresh-button");
 const leaderboardList = document.getElementById("leaderboard-list");
 const badgeFirstStep = document.getElementById("badge-first-step");
 const badgeSharpEye = document.getElementById("badge-sharp-eye");
@@ -755,6 +759,87 @@ async function loadLeaderboard() {
   }
 }
 
+function formatNewsDate(dateString) {
+  const date = new Date(dateString);
+
+  if (Number.isNaN(date.getTime())) {
+    return "Unknown date";
+  }
+
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  });
+}
+
+function renderNewsArticles(articles) {
+  if (!newsGrid) {
+    return;
+  }
+
+  if (!Array.isArray(articles) || articles.length === 0) {
+    newsGrid.innerHTML = `<div class="news-empty">No cybersecurity articles were returned.</div>`;
+    return;
+  }
+
+  newsGrid.innerHTML = articles.map((article) => `
+    <article class="news-card">
+      <div class="news-card-top">
+        <span class="news-category-tag">Cybersecurity</span>
+      </div>
+      <div class="news-card-meta">
+        <span class="news-source">${article.source}</span>
+        <span class="news-date">${formatNewsDate(article.publishedAt)}</span>
+      </div>
+      <h3 class="news-title">${article.title || "Untitled article"}</h3>
+      <a class="news-link" href="${article.url}" target="_blank" rel="noopener noreferrer">Read article</a>
+    </article>
+  `).join("");
+}
+
+function renderNewsSkeletons(count = 6) {
+  if (!newsGrid) {
+    return;
+  }
+
+  newsGrid.innerHTML = Array.from({ length: count }, () => `
+    <article class="news-card news-card-skeleton" aria-hidden="true">
+      <div class="news-card-top">
+        <span class="news-category-tag news-skeleton news-skeleton-tag"></span>
+      </div>
+      <div class="news-card-meta">
+        <span class="news-skeleton news-skeleton-line news-skeleton-short"></span>
+        <span class="news-skeleton news-skeleton-line news-skeleton-date"></span>
+      </div>
+      <div class="news-skeleton news-skeleton-line news-skeleton-title"></div>
+      <div class="news-skeleton news-skeleton-line news-skeleton-title-alt"></div>
+      <div class="news-skeleton news-skeleton-line news-skeleton-link"></div>
+    </article>
+  `).join("");
+}
+
+async function loadCybersecurityNews() {
+  if (!newsGrid || !newsStatus || !newsRefreshButton) {
+    return;
+  }
+
+  newsRefreshButton.disabled = true;
+  newsStatus.textContent = "Loading cybersecurity news...";
+  renderNewsSkeletons();
+
+  try {
+    const data = await requestJson(`${API_BASE_URL}/news`);
+    renderNewsArticles(data.articles);
+    newsStatus.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+  } catch (error) {
+    newsGrid.innerHTML = `<div class="news-empty">${error.message}</div>`;
+    newsStatus.textContent = "News refresh failed";
+  } finally {
+    newsRefreshButton.disabled = false;
+  }
+}
+
 function typeMessagePreview(text) {
   if (previewTypingTimer) {
     window.clearTimeout(previewTypingTimer);
@@ -854,6 +939,49 @@ function setupAuthWordAnimation() {
         spaceSpan.textContent = " ";
         element.appendChild(spaceSpan);
       }
+    });
+  });
+}
+
+function setupHeroLineAnimation() {
+  heroLineTargets.forEach((element, elementIndex) => {
+    const text = element.textContent
+      .trim()
+      .replace(/\s+/g, " ");
+
+    if (!text) {
+      return;
+    }
+
+    const maxLineLength = element.tagName === "H1" ? 22 : 60;
+    const words = text.split(" ");
+    const lines = [];
+    let currentLine = "";
+
+    words.forEach((word) => {
+      const candidate = currentLine ? `${currentLine} ${word}` : word;
+
+      if (candidate.length > maxLineLength && currentLine) {
+        lines.push(currentLine);
+        currentLine = word;
+        return;
+      }
+
+      currentLine = candidate;
+    });
+
+    if (currentLine) {
+      lines.push(currentLine);
+    }
+
+    element.textContent = "";
+
+    lines.forEach((line, lineIndex) => {
+      const lineSpan = document.createElement("span");
+      lineSpan.className = "hero-line";
+      lineSpan.textContent = line;
+      lineSpan.style.animationDelay = `${180 + elementIndex * 220 + lineIndex * 140}ms`;
+      element.appendChild(lineSpan);
     });
   });
 }
@@ -1098,6 +1226,10 @@ logoutButton.addEventListener("click", () => {
   authFeedback.textContent = "You have been logged out.";
 });
 
+newsRefreshButton?.addEventListener("click", () => {
+  loadCybersecurityNews();
+});
+
 themeToggle.addEventListener("click", () => {
   const nextTheme = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
   applyTheme(nextTheme);
@@ -1111,6 +1243,8 @@ loadSession();
 renderInbox();
 renderQuiz();
 loadLeaderboard();
+loadCybersecurityNews();
 animateHeroStats();
 setupRevealAnimations();
 setupAuthWordAnimation();
+setupHeroLineAnimation();

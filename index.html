@@ -119,8 +119,8 @@
             <span>Safe simulations</span>
             <span>Immediate feedback</span>
           </div>
-          <h1>Learn how phishing works before it works on you.</h1>
-          <p class="hero-text">
+          <h1 class="hero-line-target">Learn how phishing works before it works on you.</h1>
+          <p class="hero-text hero-line-target">
             This site breaks down how phishing attacks are built, what warning signs they leave behind,
             and how to respond using safe, interactive simulations instead of risky real-world exposure.
           </p>
@@ -135,27 +135,56 @@
           </ul>
         </section>
 
-        <aside class="hero-panel reveal" aria-label="Phishing attack flow">
-          <div class="hero-panel-card reveal">
-            <p class="panel-label">Typical phishing flow</p>
-            <ol class="attack-flow">
-              <li><span>1</span>Attacker impersonates a trusted sender</li>
-              <li><span>2</span>Creates urgency or fear</li>
-              <li><span>3</span>Pushes a link, file, or reply</li>
-              <li><span>4</span>Steals credentials, money, or access</li>
-            </ol>
-          </div>
-          <div class="signal-card reveal">
-            <p class="panel-label">Fastest warning signs</p>
-            <div class="signal-list">
-              <span>Suspicious domain</span>
-              <span>Urgent language</span>
-              <span>Unexpected attachment</span>
-              <span>Credential request</span>
-            </div>
+        <aside class="hero-visual reveal" aria-hidden="true">
+          <div class="hero-illustration">
+            <div class="hero-illustration-glow"></div>
+            <svg viewBox="0 0 520 300" class="hero-illustration-svg" role="presentation">
+              <defs>
+                <linearGradient id="heroScreenGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6fe3ca" />
+                  <stop offset="100%" stop-color="#9ac8ff" />
+                </linearGradient>
+              </defs>
+              <rect x="112" y="38" width="290" height="168" rx="18" fill="rgba(9, 18, 28, 0.82)" stroke="rgba(111, 227, 202, 0.28)" />
+              <rect x="128" y="56" width="258" height="132" rx="12" fill="rgba(7, 14, 22, 0.96)" />
+              <circle cx="160" cy="88" r="7" fill="url(#heroScreenGlow)" />
+              <rect x="178" y="82" width="74" height="12" rx="6" fill="rgba(154, 200, 255, 0.28)" />
+              <rect x="128" y="112" width="214" height="10" rx="5" fill="rgba(111, 227, 202, 0.16)" />
+              <rect x="128" y="132" width="184" height="10" rx="5" fill="rgba(154, 200, 255, 0.16)" />
+              <rect x="128" y="152" width="228" height="10" rx="5" fill="rgba(111, 227, 202, 0.12)" />
+              <path d="M223 182h68l12 30h-92z" fill="rgba(11, 20, 31, 0.96)" />
+              <rect x="178" y="212" width="158" height="10" rx="5" fill="rgba(255,255,255,0.08)" />
+              <circle cx="260" cy="112" r="48" fill="rgba(255, 112, 134, 0.08)" />
+              <path d="M260 102c-18 0-33 14-33 31v10h66v-10c0-17-15-31-33-31z" fill="rgba(255, 112, 134, 0.2)" />
+              <circle cx="260" cy="90" r="20" fill="rgba(255, 112, 134, 0.28)" />
+              <path d="M184 226c28-26 57-39 76-39s48 13 76 39" fill="none" stroke="rgba(111, 227, 202, 0.4)" stroke-width="8" stroke-linecap="round" />
+              <circle cx="108" cy="84" r="24" fill="rgba(255, 112, 134, 0.12)" />
+              <circle cx="412" cy="180" r="18" fill="rgba(111, 227, 202, 0.12)" />
+            </svg>
           </div>
         </aside>
       </div>
+
+      <aside class="hero-panel reveal" aria-label="Phishing attack flow">
+        <div class="hero-panel-card reveal">
+          <p class="panel-label">Typical phishing flow</p>
+          <ol class="attack-flow">
+            <li><span>1</span>Attacker impersonates a trusted sender</li>
+            <li><span>2</span>Creates urgency or fear</li>
+            <li><span>3</span>Pushes a link, file, or reply</li>
+            <li><span>4</span>Steals credentials, money, or access</li>
+          </ol>
+        </div>
+        <div class="signal-card reveal">
+          <p class="panel-label">Fastest warning signs</p>
+          <div class="signal-list">
+            <span>Suspicious domain</span>
+            <span>Urgent language</span>
+            <span>Unexpected attachment</span>
+            <span>Credential request</span>
+          </div>
+        </div>
+      </aside>
 
       <div class="hero-band reveal" aria-label="Platform highlights">
         <article class="band-item feature-card reveal">
@@ -246,6 +275,13 @@
           <p class="eyebrow">How phishing works</p>
           <h2>The attack is usually simple. The psychology is the real weapon.</h2>
         </div>
+        <div class="how-it-works-shield" aria-hidden="true">
+          <div class="shield-ring shield-ring-1"></div>
+          <div class="shield-ring shield-ring-2"></div>
+          <div class="shield-core">
+            <span class="shield-mark">&#128737;</span>
+          </div>
+        </div>
         <div class="info-grid">
           <article class="info-card modern-card reveal">
             <div class="info-icon" aria-hidden="true">🎭</div>
@@ -277,6 +313,12 @@
         </div>
         <div class="example-grid">
           <article class="example-card modern-card bad reset-scam reveal">
+            <div class="example-shot" aria-hidden="true">
+              <div class="example-shot-topbar"></div>
+              <div class="example-shot-row example-shot-row-strong"></div>
+              <div class="example-shot-row"></div>
+              <div class="example-shot-row example-shot-row-alert"></div>
+            </div>
             <div class="example-header">
               <span class="badge badge-bad">Phishing</span>
               <h3>Fake password reset</h3>
@@ -294,6 +336,12 @@
           </article>
 
           <article class="example-card modern-card good service-notice reveal">
+            <div class="example-shot" aria-hidden="true">
+              <div class="example-shot-topbar"></div>
+              <div class="example-shot-row example-shot-row-safe"></div>
+              <div class="example-shot-row"></div>
+              <div class="example-shot-row example-shot-row-short"></div>
+            </div>
             <div class="example-header">
               <span class="badge badge-good">Legitimate</span>
               <h3>Routine service notice</h3>
@@ -310,6 +358,12 @@
           </article>
 
           <article class="example-card modern-card bad delivery-scam reveal">
+            <div class="example-shot" aria-hidden="true">
+              <div class="example-shot-topbar"></div>
+              <div class="example-shot-row example-shot-row-strong"></div>
+              <div class="example-shot-row example-shot-row-short"></div>
+              <div class="example-shot-row example-shot-row-alert"></div>
+            </div>
             <div class="example-header">
               <span class="badge badge-bad">Phishing</span>
               <h3>Package delivery scam</h3>
@@ -322,6 +376,72 @@
               <li><span class="clue-icon clue-icon-payment" aria-hidden="true">&#128179;</span><span>Unexpected payment demand</span></li>
               <li><span class="clue-icon clue-icon-data" aria-hidden="true">&#128203;</span><span>Requests more data than needed</span></li>
               <li><span class="clue-icon clue-icon-fee" aria-hidden="true">&#36;</span><span>Uses a small fee to justify card entry</span></li>
+            </ul>
+          </article>
+
+          <article class="example-card modern-card bad reveal">
+            <div class="example-shot" aria-hidden="true">
+              <div class="example-shot-topbar"></div>
+              <div class="example-shot-row example-shot-row-alert"></div>
+              <div class="example-shot-row"></div>
+              <div class="example-shot-row example-shot-row-short"></div>
+            </div>
+            <div class="example-header">
+              <span class="badge badge-bad">Phishing</span>
+              <h3>Fake ID suspension email</h3>
+            </div>
+            <p class="example-from">From: Citizen ID Office &lt;alerts@national-id-review.info&gt;</p>
+            <p class="example-body">
+              "Your national ID will be suspended within 24 hours due to verification failure. Confirm your ID number and upload a photo immediately."
+            </p>
+            <ul class="clue-list">
+              <li><span class="clue-icon clue-icon-domain" aria-hidden="true">&#128279;</span><span>Sender domain does not match an official government address</span></li>
+              <li><span class="clue-icon clue-icon-urgency" aria-hidden="true">&#9201;</span><span>Threatens suspension to force quick action</span></li>
+              <li><span class="clue-icon clue-icon-data" aria-hidden="true">&#128203;</span><span>Requests sensitive identity data and document upload</span></li>
+            </ul>
+          </article>
+
+          <article class="example-card modern-card bad reveal">
+            <div class="example-shot" aria-hidden="true">
+              <div class="example-shot-topbar"></div>
+              <div class="example-shot-row example-shot-row-strong"></div>
+              <div class="example-shot-row"></div>
+              <div class="example-shot-row example-shot-row-short"></div>
+            </div>
+            <div class="example-header">
+              <span class="badge badge-bad">Phishing</span>
+              <h3>Fake LinkedIn connection request</h3>
+            </div>
+            <p class="example-from">From: LinkedIn Network &lt;connect@linkedin-careers.net&gt;</p>
+            <p class="example-body">
+              "A recruiter wants to connect with you. View the private message and sign in now to avoid losing the opportunity."
+            </p>
+            <ul class="clue-list">
+              <li><span class="clue-icon clue-icon-domain" aria-hidden="true">&#128279;</span><span>Uses a lookalike LinkedIn domain instead of the real platform</span></li>
+              <li><span class="clue-icon clue-icon-urgency" aria-hidden="true">&#9201;</span><span>Pushes urgency around a job opportunity</span></li>
+              <li><span class="clue-icon clue-icon-credential" aria-hidden="true">&#128274;</span><span>Designed to drive a credential-stealing sign-in</span></li>
+            </ul>
+          </article>
+
+          <article class="example-card modern-card good reveal">
+            <div class="example-shot" aria-hidden="true">
+              <div class="example-shot-topbar"></div>
+              <div class="example-shot-row example-shot-row-safe"></div>
+              <div class="example-shot-row"></div>
+              <div class="example-shot-row example-shot-row-short"></div>
+            </div>
+            <div class="example-header">
+              <span class="badge badge-good">Legitimate</span>
+              <h3>Legitimate bank notification</h3>
+            </div>
+            <p class="example-from">From: First National Bank &lt;alerts@firstnationalbank.com&gt;</p>
+            <p class="example-body">
+              "A new statement is available in your secure banking inbox. Please sign in through the mobile app or your usual bookmarked banking site."
+            </p>
+            <ul class="clue-list">
+              <li><span class="clue-icon clue-icon-organization" aria-hidden="true">&#127970;</span><span>Sender domain matches the bank's normal domain</span></li>
+              <li><span class="clue-icon clue-icon-safe" aria-hidden="true">&#10003;</span><span>Directs users to trusted channels instead of a surprise link</span></li>
+              <li><span class="clue-icon clue-icon-context" aria-hidden="true">&#9432;</span><span>Provides a routine account update without asking for credentials by email</span></li>
             </ul>
           </article>
         </div>
@@ -544,6 +664,48 @@
               <span class="badge-hint">Reach Expert level to unlock this badge.</span>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section class="section section-panel reveal" id="cybersecurity-news">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Cybersecurity News</p>
+          <h2>Track current cybersecurity headlines without leaving the training lab.</h2>
+        </div>
+        <div class="news-panel reveal">
+          <div class="news-map-graphic" aria-hidden="true">
+            <svg viewBox="0 0 720 180" class="news-map-svg" role="presentation">
+              <g fill="rgba(154, 200, 255, 0.12)" stroke="rgba(111, 227, 202, 0.18)" stroke-width="1.2">
+                <path d="M66 82l40-24 46 8 24 28-18 20-56 6-28-14z" />
+                <path d="M220 58l58-14 82 10 20 20-28 26-52 4-28 18-42-10-16-28z" />
+                <path d="M392 60l54-16 66 10 14 22-16 18-44 8-24 26-48-8-22-22z" />
+                <path d="M540 100l44-18 54 10 18 24-24 18-50 6-34-14z" />
+                <path d="M298 122l30 14 8 22-24 10-36-10-8-18z" />
+              </g>
+              <g stroke="rgba(255, 207, 112, 0.44)" stroke-width="2" stroke-linecap="round">
+                <path d="M144 90c44 4 82 4 126-6" />
+                <path d="M332 82c56 8 108 14 180 38" />
+                <path d="M476 102c38-6 78-4 118 18" />
+              </g>
+              <g fill="#ffcf70">
+                <circle cx="142" cy="90" r="4" />
+                <circle cx="332" cy="82" r="4" />
+                <circle cx="476" cy="102" r="4" />
+                <circle cx="596" cy="120" r="4" />
+              </g>
+            </svg>
+          </div>
+          <div class="news-toolbar">
+            <div>
+              <h3>Latest cybersecurity coverage</h3>
+              <p class="news-toolbar-copy">Fetched from NewsAPI with the query <code>cybersecurity</code>.</p>
+            </div>
+            <button class="button button-secondary news-refresh-button" id="news-refresh-button" type="button">
+              Refresh
+            </button>
+          </div>
+          <div class="news-status" id="news-status" aria-live="polite">Loading cybersecurity news...</div>
+          <div class="news-grid" id="news-grid"></div>
         </div>
       </section>
 
