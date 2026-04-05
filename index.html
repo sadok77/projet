@@ -15,10 +15,18 @@
   <div class="page-glow page-glow-right" aria-hidden="true"></div>
   <div class="page-shell">
     <section class="auth-shell reveal visible" id="auth-shell">
+      <div class="auth-particles" aria-hidden="true">
+        <span class="auth-particle auth-particle-1"></span>
+        <span class="auth-particle auth-particle-2"></span>
+        <span class="auth-particle auth-particle-3"></span>
+        <span class="auth-particle auth-particle-4"></span>
+        <span class="auth-particle auth-particle-5"></span>
+        <span class="auth-particle auth-particle-6"></span>
+      </div>
       <div class="auth-copy reveal visible">
         <p class="eyebrow">Member access</p>
-        <h1>Sign in to unlock the phishing training lab.</h1>
-        <p class="hero-text">
+        <h1 class="auth-word-target">Sign in to unlock the phishing training lab.</h1>
+        <p class="hero-text auth-word-target">
           Create a demo account or sign in with an existing username and password to access the lessons,
           simulations, and quiz.
         </p>
@@ -44,7 +52,7 @@
             Password
             <input type="password" id="login-password" placeholder="your password" required>
           </label>
-          <button class="button button-primary" type="submit">Sign in</button>
+          <button class="button button-primary auth-submit-button" type="submit">Sign in</button>
         </form>
 
         <form class="auth-form" id="register-form">
@@ -56,7 +64,7 @@
             Password
             <input type="password" id="register-password" placeholder="create a password" required>
           </label>
-          <button class="button button-primary" type="submit">Create account</button>
+          <button class="button button-primary auth-submit-button" type="submit">Create account</button>
         </form>
 
         <div class="auth-feedback" id="auth-feedback" aria-live="polite">
@@ -83,16 +91,17 @@
             <span class="brand-mark">PL</span>
             <span>PhishLab</span>
           </div>
-          <p class="brand-subtitle">Interactive phishing awareness platform</p>
         </div>
         <div class="topbar-links">
           <div class="nav-links-group">
+            <a href="#dashboard">Dashboard</a>
             <a href="#examples">Examples</a>
             <a href="#simulation">Simulation</a>
             <a href="#quiz">Quiz</a>
           </div>
           <div class="nav-status-group">
             <span class="score-pill" id="score-pill">Score 0 pts | Beginner</span>
+            <span class="save-status save-status-idle" id="save-status" aria-live="polite">Not synced</span>
             <span class="session-pill" id="session-pill">Signed out</span>
             <button class="button button-secondary nav-logout hidden" id="logout-button" type="button">Logout</button>
           </div>
@@ -168,6 +177,70 @@
     </header>
 
     <main>
+      <section class="section section-panel reveal" id="dashboard">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Dashboard</p>
+          <h2>Your current training snapshot, at a glance.</h2>
+        </div>
+        <div class="dashboard-layout">
+          <section class="dashboard-summary modern-card reveal">
+            <div class="dashboard-summary-header">
+              <div>
+                <p class="panel-label">Current user</p>
+                <h3 id="dashboard-username">Signed out</h3>
+              </div>
+              <span class="dashboard-level-pill" id="dashboard-level-pill">Beginner</span>
+            </div>
+            <div class="dashboard-metric-grid">
+              <article class="dashboard-metric-card">
+                <span class="dashboard-metric-label">Score</span>
+                <strong class="dashboard-metric-value" id="dashboard-score">0</strong>
+                <span class="dashboard-metric-note">Total points earned</span>
+              </article>
+              <article class="dashboard-metric-card">
+                <span class="dashboard-metric-label">Level</span>
+                <strong class="dashboard-metric-value" id="dashboard-level">Beginner</strong>
+                <span class="dashboard-metric-note">Current awareness tier</span>
+              </article>
+              <article class="dashboard-metric-card">
+                <span class="dashboard-metric-label">Badges earned</span>
+                <strong class="dashboard-metric-value" id="dashboard-badges-count">0/4</strong>
+                <span class="dashboard-metric-note">Unlocked achievements</span>
+              </article>
+            </div>
+          </section>
+
+          <section class="dashboard-side-grid">
+            <article class="dashboard-panel modern-card reveal">
+              <div class="dashboard-panel-header">
+                <h3>Badges earned</h3>
+                <span class="dashboard-panel-meta" id="dashboard-badges-meta">0 unlocked</span>
+              </div>
+              <div class="dashboard-badge-list" id="dashboard-badge-list">
+                <span class="dashboard-empty">No badges earned yet.</span>
+              </div>
+            </article>
+
+            <article class="dashboard-panel modern-card reveal">
+              <div class="dashboard-panel-header">
+                <h3>Simulation progress</h3>
+                <span class="dashboard-panel-meta" id="dashboard-simulation-meta">0 of 8</span>
+              </div>
+              <div class="dashboard-progress-stat">
+                <strong id="dashboard-simulation-count">0/8</strong>
+                <span id="dashboard-simulation-note">Scenarios mastered</span>
+              </div>
+              <div class="dashboard-progress-track" aria-hidden="true">
+                <div class="dashboard-progress-fill" id="dashboard-simulation-fill"></div>
+              </div>
+              <p class="dashboard-progress-caption" id="dashboard-simulation-caption">
+                Complete inbox decisions to build simulation progress.
+              </p>
+            </article>
+          </section>
+        </div>
+      </section>
+
       <section class="section section-panel reveal" id="how-it-works">
         <div class="section-heading reveal">
           <p class="eyebrow">How phishing works</p>
@@ -203,7 +276,7 @@
           <h2>Compare realistic phishing lures with the clues they expose.</h2>
         </div>
         <div class="example-grid">
-          <article class="example-card modern-card bad reveal">
+          <article class="example-card modern-card bad reset-scam reveal">
             <div class="example-header">
               <span class="badge badge-bad">Phishing</span>
               <h3>Fake password reset</h3>
@@ -214,13 +287,13 @@
               Confirm your account immediately."
             </p>
             <ul class="clue-list">
-              <li>Lookalike domain uses `0` instead of `o`</li>
-              <li>Artificial deadline creates panic</li>
-              <li>Pushes an immediate credential action</li>
+              <li><span class="clue-icon clue-icon-domain" aria-hidden="true">&#128279;</span><span>Lookalike domain uses `0` instead of `o`</span></li>
+              <li><span class="clue-icon clue-icon-urgency" aria-hidden="true">&#9201;</span><span>Artificial deadline creates panic</span></li>
+              <li><span class="clue-icon clue-icon-credential" aria-hidden="true">&#128274;</span><span>Pushes an immediate credential action</span></li>
             </ul>
           </article>
 
-          <article class="example-card modern-card good reveal">
+          <article class="example-card modern-card good service-notice reveal">
             <div class="example-header">
               <span class="badge badge-good">Legitimate</span>
               <h3>Routine service notice</h3>
@@ -230,13 +303,13 @@
               "Scheduled maintenance starts Friday at 10:00 PM. No action is required. Use the internal portal if you need status updates."
             </p>
             <ul class="clue-list">
-              <li>Normal domain matches the organization</li>
-              <li>No pressure to click or disclose secrets</li>
-              <li>Provides context instead of fear</li>
+              <li><span class="clue-icon clue-icon-organization" aria-hidden="true">&#127970;</span><span>Normal domain matches the organization</span></li>
+              <li><span class="clue-icon clue-icon-safe" aria-hidden="true">&#10003;</span><span>No pressure to click or disclose secrets</span></li>
+              <li><span class="clue-icon clue-icon-context" aria-hidden="true">&#9432;</span><span>Provides context instead of fear</span></li>
             </ul>
           </article>
 
-          <article class="example-card modern-card bad reveal">
+          <article class="example-card modern-card bad delivery-scam reveal">
             <div class="example-header">
               <span class="badge badge-bad">Phishing</span>
               <h3>Package delivery scam</h3>
@@ -246,9 +319,9 @@
               The site asks for card details, billing address, and a one-time passcode for a tiny fake fee.
             </p>
             <ul class="clue-list">
-              <li>Unexpected payment demand</li>
-              <li>Requests more data than needed</li>
-              <li>Uses a small fee to justify card entry</li>
+              <li><span class="clue-icon clue-icon-payment" aria-hidden="true">&#128179;</span><span>Unexpected payment demand</span></li>
+              <li><span class="clue-icon clue-icon-data" aria-hidden="true">&#128203;</span><span>Requests more data than needed</span></li>
+              <li><span class="clue-icon clue-icon-fee" aria-hidden="true">&#36;</span><span>Uses a small fee to justify card entry</span></li>
             </ul>
           </article>
         </div>
@@ -316,7 +389,28 @@
             <div class="browser-bar">
               <span></span><span></span><span></span>
               <div class="address-bar">
-                https://company-portal-login.<span class="domain-danger">verify-session</span>.<span class="domain-danger">net</span>
+                https://company-portal-login.
+                <span
+                  class="domain-danger domain-tooltip-trigger"
+                  tabindex="0"
+                  aria-describedby="domain-tooltip-subdomain"
+                >
+                  verify-session
+                  <span class="domain-tooltip" id="domain-tooltip-subdomain" role="tooltip">
+                    Suspicious subdomain. It adds pressure wording instead of using the company's normal portal address.
+                  </span>
+                </span>
+                .
+                <span
+                  class="domain-danger domain-tooltip-trigger"
+                  tabindex="0"
+                  aria-describedby="domain-tooltip-tld"
+                >
+                  net
+                  <span class="domain-tooltip" id="domain-tooltip-tld" role="tooltip">
+                    Suspicious top-level domain. The brand is not using its expected company-owned domain here.
+                  </span>
+                </span>
               </div>
             </div>
             <div class="login-card">
@@ -336,9 +430,55 @@
               <p class="safe-note">Safe demo: nothing is sent or stored.</p>
             </div>
           </div>
-          <div class="demo-explainer reveal" id="demo-result">
-            This fake page looks polished, but the domain is unrelated to the real company. In a real attack,
-            entering your password would hand it directly to the attacker.
+          <div class="demo-side-panel reveal">
+            <div class="demo-steps modern-card reveal">
+              <div class="demo-side-header">
+                <p class="panel-label">Attack walkthrough</p>
+                <h3>How a polished fake login page steals trust</h3>
+              </div>
+              <div class="attack-step-list">
+                <article class="attack-step-card">
+                  <span class="attack-step-icon" aria-hidden="true">&#127970;</span>
+                  <div>
+                    <h4>Impersonate a trusted portal</h4>
+                    <p>The attacker copies familiar branding and labels the page as a security check.</p>
+                  </div>
+                </article>
+                <article class="attack-step-card">
+                  <span class="attack-step-icon" aria-hidden="true">&#9888;</span>
+                  <div>
+                    <h4>Create urgency</h4>
+                    <p>"Restore access" language pushes the user to act before inspecting the URL carefully.</p>
+                  </div>
+                </article>
+                <article class="attack-step-card">
+                  <span class="attack-step-icon" aria-hidden="true">&#128273;</span>
+                  <div>
+                    <h4>Capture credentials</h4>
+                    <p>The form harvests email and password directly, without needing malware or an exploit.</p>
+                  </div>
+                </article>
+                <article class="attack-step-card">
+                  <span class="attack-step-icon" aria-hidden="true">&#10227;</span>
+                  <div>
+                    <h4>Reuse access elsewhere</h4>
+                    <p>Stolen credentials can be replayed against email, payroll, cloud storage, or VPN logins.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="demo-explainer reveal" id="demo-result" aria-live="polite">
+              <div class="demo-side-header">
+                <p class="panel-label">What the attacker gets</p>
+                <h3>Submit the fake form to reveal the stolen data trail</h3>
+              </div>
+              <p class="demo-result-copy">
+                This fake page looks polished, but the domain is unrelated to the real company. In a real attack,
+                entering your password would hand it directly to the attacker.
+              </p>
+              <div class="stolen-data-list" id="stolen-data-list"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -374,6 +514,7 @@
               <h3>First Step</h3>
               <p>Unlock your first correct answer anywhere in the training flow.</p>
               <span class="badge-state">Locked</span>
+              <span class="badge-hint">Get 1 correct answer to unlock this badge.</span>
             </div>
           </article>
           <article class="badge-card reveal locked" id="badge-sharp-eye">
@@ -382,6 +523,7 @@
               <h3>Sharp Eye</h3>
               <p>Make 3 correct phishing simulation decisions.</p>
               <span class="badge-state">Locked</span>
+              <span class="badge-hint">Make 3 correct simulation decisions to unlock this badge.</span>
             </div>
           </article>
           <article class="badge-card reveal locked" id="badge-quiz-master">
@@ -390,6 +532,7 @@
               <h3>Quiz Master</h3>
               <p>Complete the full quiz and reach the final question outcome.</p>
               <span class="badge-state">Locked</span>
+              <span class="badge-hint">Finish the full quiz to unlock this badge.</span>
             </div>
           </article>
           <article class="badge-card reveal locked" id="badge-phishing-expert">
@@ -398,6 +541,7 @@
               <h3>Phishing Expert</h3>
               <p>Reach Expert level or higher based on your total points.</p>
               <span class="badge-state">Locked</span>
+              <span class="badge-hint">Reach Expert level to unlock this badge.</span>
             </div>
           </article>
         </div>

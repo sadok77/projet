@@ -14,11 +14,63 @@
       "id": "036d753f-496b-409a-801a-dfa470bf83fa",
       "username": "Mondher",
       "passwordHash": "b3d4aa94a33864ffcb18a42727362ad3:570aedcbb0fe277a5280861406f2f6d47cd4cde50a5c365548eb453081745e5b14eec2c7503fbf680643744e95953dc460e94ebfedb456c309c0ada6a3bd9686",
+      "score": 5,
+      "level": "Beginner",
+      "badges": [
+        "First Steps"
+      ],
+      "createdAt": "2026-04-04T00:28:19.794Z",
+      "updatedAt": "2026-04-05T20:27:58.553Z"
+    },
+    {
+      "id": "f9206d16-9ee4-4c72-90c5-01405f2d28f8",
+      "username": "realmadrid",
+      "passwordHash": "29a03f3a3d1747c6af282c5631dc6e84:75f2742829a47783ab830ea9058de9ac503b79eda11938ab7312b2dde7264759f3037e4741982db9c3731989f8647e6c5882cb22cc2ed3c1ffae59566330047a",
       "score": 0,
       "level": "Beginner",
       "badges": [],
-      "createdAt": "2026-04-04T00:28:19.794Z",
-      "updatedAt": "2026-04-04T00:34:22.058Z"
+      "createdAt": "2026-04-04T21:27:16.111Z",
+      "updatedAt": "2026-04-04T21:27:16.111Z"
+    },
+    {
+      "id": "0ae96fab-57bf-4408-851d-6abcf82e117e",
+      "username": "fcbarcelone",
+      "passwordHash": "ba166774f74e28e859ae13bf6d542ed1:2ee5b730d2d4e6a823d792ec20d1a15fdb557ed7cf41afdd3bbc8e76a2b7e3414db7a6746b7bd45bb67ed025a249f5b4203553b8ce810362c7a41df4b7575baf",
+      "score": 0,
+      "level": "Beginner",
+      "badges": [],
+      "createdAt": "2026-04-04T22:36:37.639Z",
+      "updatedAt": "2026-04-04T22:36:37.639Z"
+    },
+    {
+      "id": "a0f428e6-c611-4de6-b2a8-d21b0df546c6",
+      "username": "sadokjeridi",
+      "passwordHash": "b71d3badc8d4f4d9c1011c68ed4cadd4:23f2dba5c7bb1b6eb1210c8eb4accd4a07cbd581a8c623922fe4ccb1c52d18d8f66a8e04a63d2d41239d6b291700420e6d799d34d796e3b80ba0c957fedaff1b",
+      "score": 0,
+      "level": "Beginner",
+      "badges": [],
+      "createdAt": "2026-04-05T01:02:43.802Z",
+      "updatedAt": "2026-04-05T01:02:53.124Z"
+    },
+    {
+      "id": "0a8bff77-e206-450c-9128-5a020c59fc90",
+      "username": "nissan",
+      "passwordHash": "8c7c9c8584e3dc3392544e25fcbd4427:209f0cc440dd5a27e2f62bebf03b6834600e459d111f313ad0f53bf019967f2bfcaf5adfd1268dbec0382d43d6fbd488f2402658494641b871b9bf2f4cf5101d",
+      "score": 0,
+      "level": "Beginner",
+      "badges": [],
+      "createdAt": "2026-04-05T01:06:37.263Z",
+      "updatedAt": "2026-04-05T01:06:37.263Z"
+    },
+    {
+      "id": "72a44ebc-1645-46d2-8b07-bdb4503c9767",
+      "username": "azerty",
+      "passwordHash": "4de9868d2934d99f6f40cda14c427fab:30cebe0b69bf7df242a8b66bdb206f0af20b72ccf6a6e0104988317b95206870399ec2dc38a1b442ed50c8cff20b8e18d5eb526c9777aa1fa3fe06be11f6aa2d",
+      "score": 0,
+      "level": "Beginner",
+      "badges": [],
+      "createdAt": "2026-04-05T01:34:03.129Z",
+      "updatedAt": "2026-04-05T01:34:03.129Z"
     }
   ]
 }

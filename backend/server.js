@@ -119,6 +119,17 @@ app.post("/api/auth/login", async (req, res) => {
   });
 });
 
+app.get("/api/user/me", authenticateToken, async (req, res) => {
+  const users = await readUsers();
+  const user = users.find((entry) => entry.id === req.auth.sub);
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  return res.json({ user: sanitizeUser(user) });
+});
+
 app.post("/api/user/score", authenticateToken, async (req, res) => {
   const payload = normalizeScorePayload(req.body);
 
@@ -142,6 +153,21 @@ app.post("/api/user/score", authenticateToken, async (req, res) => {
   return res.json({
     message: "Score saved successfully",
     user: sanitizeUser(user)
+  });
+});
+
+app.get("/api/user/score", authenticateToken, async (req, res) => {
+  const users = await readUsers();
+  const user = users.find((entry) => entry.id === req.auth.sub);
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  return res.json({
+    score: user.score,
+    level: user.level,
+    badges: user.badges
   });
 });
 
