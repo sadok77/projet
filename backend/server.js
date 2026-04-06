@@ -13,9 +13,27 @@ const app = express();
 const PORT = Number(process.env.PORT || 3000);
 const clientOrigin = process.env.CLIENT_ORIGIN || "*";
 const NEWS_API_KEY = process.env.NEWS_API_KEY || "cec9947b43754b228c6ee36c7f16fdc1";
+const allowedOrigins = new Set([
+  "https://projet-five-opal.vercel.app"
+]);
+
+if (clientOrigin && clientOrigin !== "*") {
+  clientOrigin
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean)
+    .forEach((origin) => allowedOrigins.add(origin));
+}
 
 app.use(cors({
-  origin: clientOrigin === "*" ? true : clientOrigin,
+  origin(origin, callback) {
+    if (!origin || clientOrigin === "*" || allowedOrigins.has(origin)) {
+      callback(null, true);
+      return;
+    }
+
+    callback(new Error("Not allowed by CORS"));
+  },
   credentials: true
 }));
 app.use(express.json());
